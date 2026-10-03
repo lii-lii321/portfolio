@@ -40,6 +40,11 @@ h2 { color: #1a365d; font-size: 20px; font-weight: 600; letter-spacing: 0.08em; 
 .metrics li { border-top: 1px solid #e2e8f0; padding: 10px 0; font-size: 15px; }
 .metrics li:last-child { border-bottom: 1px solid #e2e8f0; }
 .metrics strong { color: #1a365d; font-variant-numeric: tabular-nums; }
+.demo-gif {
+  display: block; width: 100%; height: auto;
+  border: 1px solid #334155; border-radius: 8px;
+  margin-bottom: 22px; background: #f8fafc;
+}
 .links { font-size: 15px; }
 .links a { margin-right: 28px; }
 
@@ -93,6 +98,7 @@ footer a { color: #2563eb; }
         <li>聚合指标附 bootstrap 95% 置信区间（百分位法，重采样 1000 次），固定 seed 完全可复现</li>
         <li>评测回归门禁 <code>--fail-under</code>：任一指标低于阈值退出码 1，可直接作 CI 合并卡点</li>
       </ul>
+      <img class="demo-gif" src="https://raw.githubusercontent.com/lii-lii321/llm-eval-kit/main/docs/demo.gif" alt="llm-eval-kit 评测 demo：合成评测集、多路检索对比与 LLM-as-judge 评分" loading="lazy">
       <p class="links">
         <a href="https://github.com/lii-lii321/llm-eval-kit">GitHub 仓库 →</a>
         <a href="https://lii-lii321.github.io/llm-eval-kit/">在线评测报告 →</a>
@@ -107,6 +113,7 @@ footer a { color: #2563eb; }
         <li>概率校准（发现 → 修复 → 复测）：ECE <strong>0.1420 → 0.0681</strong>，平均预测 PD 0.437 → 0.301（实际违约率 0.300）</li>
         <li>公平性审计（personal_status 分组）：demographic parity 差距 <strong>0.336</strong>，如实记录不作粉饰</li>
       </ul>
+      <img class="demo-gif" src="https://raw.githubusercontent.com/lii-lii321/credit-risk-modeling/main/docs/demo.gif" alt="credit-risk-modeling 建模 demo：WOE/IV 特征、实验矩阵与 SHAP 解释" loading="lazy">
       <p class="links"><a href="https://github.com/lii-lii321/credit-risk-modeling">GitHub 仓库 →</a></p>
     </article>
 
@@ -118,6 +125,7 @@ footer a { color: #2563eb; }
         <li>批量筛选实测排序（成功 3 / 失败 0）：<strong>chen_ming 84.6（B 推荐）&gt; lin_xiaoyu 48.5（D 不匹配）&gt; wang_dalisheng 29.7（D 不匹配）</strong></li>
         <li>不依赖 LLM，离线可跑、结果确定；示例匹配 jd_backend × resume_strong 总分 88.0（A 强烈推荐）</li>
       </ul>
+      <img class="demo-gif" src="https://raw.githubusercontent.com/lii-lii321/jd-resume-matcher/master/docs/demo.gif" alt="jd-resume-matcher 匹配 demo：JD↔简历结构化解析与可解释评分" loading="lazy">
       <p class="links"><a href="https://github.com/lii-lii321/jd-resume-matcher">GitHub 仓库 →</a></p>
     </article>
   </section>
