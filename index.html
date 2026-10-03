@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李云强 · 数据科学作品集</title>
+<meta name="description" content="李云强（西南石油大学 数据科学）作品集：数学功底 × AI 评测 × 业务落地，三个可复现的工程项目。">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  background: #ffffff;
+  color: #334155;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.wrap { max-width: 840px; margin: 0 auto; padding: 0 24px; }
+a { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { font-family: Consolas, "Courier New", "SFMono-Regular", Menlo, monospace; }
+
+header.hero { padding: 96px 0 64px; }
+.kicker { color: #64748b; font-size: 14px; letter-spacing: 0.05em; margin-bottom: 24px; }
+h1 { color: #1a365d; font-size: 34px; font-weight: 700; line-height: 1.35; letter-spacing: 0.02em; margin-bottom: 20px; }
+.lede { max-width: 660px; font-size: 17px; }
+
+section { padding: 40px 0; border-top: 1px solid #e2e8f0; }
+section:first-of-type { border-top: none; padding-top: 0; }
+h2 { color: #1a365d; font-size: 20px; font-weight: 600; letter-spacing: 0.08em; margin-bottom: 36px; }
+
+.card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 32px; margin-bottom: 28px; }
+.card h3 { color: #1a365d; font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+.pill {
+  display: inline-block; border: 1px solid #cbd5e1; border-radius: 999px;
+  color: #1a365d; font-size: 13px; font-weight: 400; line-height: 1.5;
+  padding: 1px 12px; margin-left: 12px; vertical-align: 2px; white-space: nowrap;
+}
+.tagline { font-size: 15.5px; margin-bottom: 4px; }
+.metrics { list-style: none; margin: 16px 0 22px; }
+.metrics li { border-top: 1px solid #e2e8f0; padding: 10px 0; font-size: 15px; }
+.metrics li:last-child { border-bottom: 1px solid #e2e8f0; }
+.metrics strong { color: #1a365d; font-variant-numeric: tabular-nums; }
+.links { font-size: 15px; }
+.links a { margin-right: 28px; }
+
+table.online { width: 100%; border-collapse: collapse; font-size: 15px; }
+table.online th {
+  text-align: left; color: #64748b; font-weight: 500; font-size: 13px;
+  letter-spacing: 0.06em; padding: 0 16px 12px 0; border-bottom: 1px solid #cbd5e1;
+}
+table.online td { padding: 16px 16px 16px 0; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+table.online td:last-child, table.online th:last-child { padding-right: 0; white-space: nowrap; }
+.status-note { color: #64748b; }
+
+.repro-title { color: #1a365d; font-size: 15px; font-weight: 600; margin: 28px 0 10px; }
+.repro-title:first-of-type { margin-top: 0; }
+pre {
+  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px;
+  padding: 14px 18px; overflow-x: auto; margin-bottom: 24px;
+}
+pre code { color: #334155; font-size: 13.5px; line-height: 1.6; }
+
+footer { border-top: 1px solid #e2e8f0; margin-top: 24px; }
+footer .wrap { padding-top: 40px; padding-bottom: 72px; color: #64748b; font-size: 14px; }
+footer a { color: #2563eb; }
+
+@media (max-width: 640px) {
+  header.hero { padding: 64px 0 48px; }
+  h1 { font-size: 26px; }
+  .card { padding: 24px; }
+  table.online td:last-child, table.online th:last-child { white-space: normal; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <p class="kicker">李云强 · 西南石油大学 数据科学（大三） · <a href="https://github.com/lii-lii321">GitHub: lii-lii321</a></p>
+  <h1>数学功底 × AI 评测 × 业务落地</h1>
+  <p class="lede">三个可复现的工程项目：一套离线可跑的 RAG/LLM 评测工具库、一条端到端信贷风控建模链路、一个可解释的 JD↔简历匹配器。页面上的每个数字都来自各仓库的实跑产物，脚本随仓开放，一条命令即可重跑。</p>
+</header>
+
+<main class="wrap">
+
+  <section id="projects">
+    <h2>项目</h2>
+
+    <article class="card">
+      <h3>llm-eval-kit <span class="pill">249 个离线测试</span></h3>
+      <p class="tagline">离线可跑的 RAG 检索与 LLM 应用评测工具库：从纯文本文档合成评测集，对比多路检索管线，LLM-as-judge 四维评分，badcase 三类归因，产出 Markdown + HTML 双报告。</p>
+      <ul class="metrics">
+        <li>demo 实测（seed=42）：Recall@10 <strong>0.9583</strong> · MRR <strong>0.9375</strong> · NDCG@10 <strong>0.9430</strong></li>
+        <li>聚合指标附 bootstrap 95% 置信区间（百分位法，重采样 1000 次），固定 seed 完全可复现</li>
+        <li>评测回归门禁 <code>--fail-under</code>：任一指标低于阈值退出码 1，可直接作 CI 合并卡点</li>
+      </ul>
+      <p class="links">
+        <a href="https://github.com/lii-lii321/llm-eval-kit">GitHub 仓库 →</a>
+        <a href="https://lii-lii321.github.io/llm-eval-kit/">在线评测报告 →</a>
+      </p>
+    </article>
+
+    <article class="card">
+      <h3>credit-risk-modeling <span class="pill">137 个测试</span></h3>
+      <p class="tagline">端到端信贷违约风险建模（问题 → 数据 → 实验 → 解释 → 部署）：自实现 WOE/IV 与 PSI，2 模型 × 3 不平衡策略实验矩阵，SHAP 可解释性，FastAPI 评分服务。</p>
+      <ul class="metrics">
+        <li>独立测试集（n=200）：AUC <strong>0.8013</strong> · KS <strong>0.5119</strong> · Gini 0.6026</li>
+        <li>概率校准（发现 → 修复 → 复测）：ECE <strong>0.1420 → 0.0681</strong>，平均预测 PD 0.437 → 0.301（实际违约率 0.300）</li>
+        <li>公平性审计（personal_status 分组）：demographic parity 差距 <strong>0.336</strong>，如实记录不作粉饰</li>
+      </ul>
+      <p class="links"><a href="https://github.com/lii-lii321/credit-risk-modeling">GitHub 仓库 →</a></p>
+    </article>
+
+    <article class="card">
+      <h3>jd-resume-matcher <span class="pill">108 个测试</span></h3>
+      <p class="tagline">JD↔简历结构化匹配与解释器：纯离线规则抽取 + 六因素加权打分，每条推荐理由都能回溯到 JD/简历原文的证据片段。</p>
+      <ul class="metrics">
+        <li>可解释评分：total_score + score_breakdown + 逐条 reasons，每条附原文证据片段与字符偏移</li>
+        <li>批量筛选实测排序（成功 3 / 失败 0）：<strong>chen_ming 84.6（B 推荐）&gt; lin_xiaoyu 48.5（D 不匹配）&gt; wang_dalisheng 29.7（D 不匹配）</strong></li>
+        <li>不依赖 LLM，离线可跑、结果确定；示例匹配 jd_backend × resume_strong 总分 88.0（A 强烈推荐）</li>
+      </ul>
+      <p class="links"><a href="https://github.com/lii-lii321/jd-resume-matcher">GitHub 仓库 →</a></p>
+    </article>
+  </section>
+
+  <section id="online">
+    <h2>在线体验</h2>
+    <table class="online">
+      <thead>
+        <tr><th>项目</th><th>入口</th><th>状态</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>llm-eval-kit 在线评测报告</td>
+          <td><a href="https://lii-lii321.github.io/llm-eval-kit/">lii-lii321.github.io/llm-eval-kit</a></td>
+          <td>已上线</td>
+        </tr>
+        <tr>
+          <td>credit-risk-modeling 交互 Demo</td>
+          <td>本地一键运行：<code>streamlit run streamlit_app.py</code></td>
+          <td class="status-note">本地运行 · Cloud 部署指引见 README</td>
+        </tr>
+        <tr>
+          <td>jd-resume-matcher 交互 Demo</td>
+          <td>本地一键运行：<code>streamlit run streamlit_app.py</code></td>
+          <td class="status-note">本地运行 · Cloud 部署指引见 README</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="repro">
+    <h2>快速复现</h2>
+    <p class="tagline">每条命令复制即跑（Python ≥ 3.10）。</p>
+
+    <h3 class="repro-title">llm-eval-kit</h3>
+    <pre><code>git clone https://github.com/lii-lii321/llm-eval-kit &amp;&amp; cd llm-eval-kit &amp;&amp; pip install -e .[dev] &amp;&amp; python -m llm_eval_kit.cli demo --out reports</code></pre>
+
+    <h3 class="repro-title">credit-risk-modeling</h3>
+    <pre><code>git clone https://github.com/lii-lii321/credit-risk-modeling &amp;&amp; cd credit-risk-modeling &amp;&amp; pip install -r requirements.txt &amp;&amp; python scripts/run_training.py</code></pre>
+
+    <h3 class="repro-title">jd-resume-matcher</h3>
+    <pre><code>git clone https://github.com/lii-lii321/jd-resume-matcher &amp;&amp; cd jd-resume-matcher &amp;&amp; pip install -r requirements.txt &amp;&amp; python cli.py --demo</code></pre>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>构建日期 2026-10-04 · 所有指标可复现，脚本均在各仓内 · <a href="https://github.com/lii-lii321">github.com/lii-lii321</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
