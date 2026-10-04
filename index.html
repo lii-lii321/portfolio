@@ -91,42 +91,46 @@ footer a { color: #2563eb; }
     <h2>项目</h2>
 
     <article class="card">
-      <h3>llm-eval-kit <span class="pill">249 个离线测试</span></h3>
+      <h3>llm-eval-kit <span class="pill">336 个离线测试</span></h3>
       <p class="tagline">离线可跑的 RAG 检索与 LLM 应用评测工具库：从纯文本文档合成评测集，对比多路检索管线，LLM-as-judge 四维评分，badcase 三类归因，产出 Markdown + HTML 双报告。</p>
       <ul class="metrics">
         <li>demo 实测（seed=42）：Recall@10 <strong>0.9583</strong> · MRR <strong>0.9375</strong> · NDCG@10 <strong>0.9430</strong></li>
         <li>聚合指标附 bootstrap 95% 置信区间（百分位法，重采样 1000 次），固定 seed 完全可复现</li>
         <li>评测回归门禁 <code>--fail-under</code>：任一指标低于阈值退出码 1，可直接作 CI 合并卡点</li>
+        <li>支持人工标注 JSONL 评测集与外部语料（<code>--dataset</code> / <code>--corpus-dir</code>），分级标注自动产出 Weighted NDCG@10</li>
       </ul>
       <img class="demo-gif" src="https://raw.githubusercontent.com/lii-lii321/llm-eval-kit/main/docs/demo.gif" alt="llm-eval-kit 评测 demo：合成评测集、多路检索对比与 LLM-as-judge 评分" loading="lazy">
       <p class="links">
         <a href="https://github.com/lii-lii321/llm-eval-kit">GitHub 仓库 →</a>
         <a href="https://lii-lii321.github.io/llm-eval-kit/">在线评测报告 →</a>
       </p>
+      <p class="tagline" style="color:#64748b;font-size:.85rem;margin:.2rem 0 0">最后同步：2026-10-04 · 测试数由 pytest 实测</p>
     </article>
 
     <article class="card">
-      <h3>credit-risk-modeling <span class="pill">137 个测试</span></h3>
+      <h3>credit-risk-modeling <span class="pill">150 个测试</span></h3>
       <p class="tagline">端到端信贷违约风险建模（问题 → 数据 → 实验 → 解释 → 部署）：自实现 WOE/IV 与 PSI，2 模型 × 3 不平衡策略实验矩阵，SHAP 可解释性，FastAPI 评分服务。</p>
       <ul class="metrics">
         <li>独立测试集（n=200）：AUC <strong>0.8013</strong> · KS <strong>0.5119</strong> · Gini 0.6026</li>
         <li>概率校准（发现 → 修复 → 复测）：ECE <strong>0.1420 → 0.0681</strong>，平均预测 PD 0.437 → 0.301（实际违约率 0.300）</li>
-        <li>公平性审计（personal_status 分组）：demographic parity 差距 <strong>0.336</strong>，如实记录不作粉饰</li>
+        <li>公平性审计（personal_status 分组）：demographic parity 差距 <strong>0.336</strong>，三档阈值敏感性实测 0.336 → 0.389 → 0.222（差距非单调收窄），如实记录不作粉饰</li>
       </ul>
       <img class="demo-gif" src="https://raw.githubusercontent.com/lii-lii321/credit-risk-modeling/main/docs/demo.gif" alt="credit-risk-modeling 建模 demo：WOE/IV 特征、实验矩阵与 SHAP 解释" loading="lazy">
       <p class="links"><a href="https://github.com/lii-lii321/credit-risk-modeling">GitHub 仓库 →</a></p>
+      <p class="tagline" style="color:#64748b;font-size:.85rem;margin:.2rem 0 0">最后同步：2026-10-04 · 测试数由 pytest 实测</p>
     </article>
 
     <article class="card">
-      <h3>jd-resume-matcher <span class="pill">108 个测试</span></h3>
+      <h3>jd-resume-matcher <span class="pill">122 个测试</span></h3>
       <p class="tagline">JD↔简历结构化匹配与解释器：纯离线规则抽取 + 六因素加权打分，每条推荐理由都能回溯到 JD/简历原文的证据片段。</p>
       <ul class="metrics">
         <li>可解释评分：total_score + score_breakdown + 逐条 reasons，每条附原文证据片段与字符偏移</li>
         <li>批量筛选实测排序（成功 3 / 失败 0）：<strong>chen_ming 84.6（B 推荐）&gt; lin_xiaoyu 48.5（D 不匹配）&gt; wang_dalisheng 29.7（D 不匹配）</strong></li>
-        <li>不依赖 LLM，离线可跑、结果确定；示例匹配 jd_backend × resume_strong 总分 88.0（A 强烈推荐）</li>
+        <li>不依赖 LLM，离线可跑、结果确定；示例匹配 jd_backend × resume_strong 总分 88.0（A 强烈推荐）；<code>--json</code> 结构化输出供程序消费，中文年限表述（两年半/应届/N个月）可解析</li>
       </ul>
       <img class="demo-gif" src="https://raw.githubusercontent.com/lii-lii321/jd-resume-matcher/master/docs/demo.gif" alt="jd-resume-matcher 匹配 demo：JD↔简历结构化解析与可解释评分" loading="lazy">
       <p class="links"><a href="https://github.com/lii-lii321/jd-resume-matcher">GitHub 仓库 →</a></p>
+      <p class="tagline" style="color:#64748b;font-size:.85rem;margin:.2rem 0 0">最后同步：2026-10-04 · 测试数由 pytest 实测</p>
     </article>
   </section>
 
@@ -174,7 +178,7 @@ footer a { color: #2563eb; }
 
 <footer>
   <div class="wrap">
-    <p>构建日期 2026-10-04 · 所有指标可复现，脚本均在各仓内 · <a href="https://github.com/lii-lii321">github.com/lii-lii321</a></p>
+    <p>构建日期 2026-10-04 · 最近同步 2026-10-04 · 所有指标可复现，脚本均在各仓内 · <a href="https://github.com/lii-lii321">github.com/lii-lii321</a></p>
   </div>
 </footer>
 
